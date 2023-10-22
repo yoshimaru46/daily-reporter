@@ -1,4 +1,5 @@
 import "https://deno.land/std@0.191.0/dotenv/load.ts";
+
 import { format, subBusinessDays } from "npm:date-fns@2";
 import { TaskProviderFactory } from "./src/task_providers/index.ts";
 import { config } from "./config.ts";
@@ -23,7 +24,7 @@ if (import.meta.main) {
   // やったことを取得
   const completedTasks = await taskProvider.getCompletedTasks(
     previousDay,
-    today,
+    today
   );
   logger.debug({ completedTasks });
 
