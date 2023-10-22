@@ -4,7 +4,7 @@ import { format, subBusinessDays } from "npm:date-fns@2";
 import { TaskProviderFactory } from "./src/task_providers/index.ts";
 import { config } from "./config.ts";
 import { initLogger } from "./src/logger.ts";
-import { formatDailyReport } from "./format_daily_report.ts";
+import { formatDailyReport } from "./src/format_daily_report.ts";
 
 if (import.meta.main) {
   const logger = initLogger(config.debugLevel);
@@ -24,7 +24,7 @@ if (import.meta.main) {
   // やったことを取得
   const completedTasks = await taskProvider.getCompletedTasks(
     previousDay,
-    today
+    today,
   );
   logger.debug({ completedTasks });
 

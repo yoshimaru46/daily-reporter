@@ -1,4 +1,4 @@
-import { Task } from "./src/task_providers/types.ts";
+import { Task } from "./task_providers/types.ts";
 
 export const formatDailyReport = (
   completedTasks: Task[],
