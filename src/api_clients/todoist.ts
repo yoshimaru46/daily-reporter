@@ -1,8 +1,6 @@
 import { Task } from "../task_providers/types.ts";
 
-import _ from "npm:lodash@4";
-
-export class TodoistApi {
+export class TodoistApiClient {
   #token: string;
   #projectId: string;
   constructor(token: string, projectId: string) {
