@@ -1,12 +1,21 @@
 # daily-reporter
 
-## Run these commands to get started
+## How to use
 
-- Run the program
-  - deno run main.ts
-- Run the program and watch for file changes
-  - deno task dev
-- Run the tests
-  - deno test
-- Run the benchmarks
-  - deno bench
+- Create `.env` file in the root directory
+
+```shq
+cp .env.example .env
+```
+
+- Edit `.env` file
+
+- Run script
+
+```sh
+deno run -A main.ts
+```
+
+## Show debug logs
+
+Set `DEBUG_LEVEL` to `debug` in `.env` file
