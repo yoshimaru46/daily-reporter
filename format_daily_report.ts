@@ -2,7 +2,7 @@ import { Task } from "./src/task_providers/types.ts";
 
 export const formatDailyReport = (
   completedTasks: Task[],
-  nextTasks: Task[]
+  nextTasks: Task[],
 ) => {
   const completedTasksText = tasksText(completedTasks);
   const nextTasksText = tasksText(nextTasks);
