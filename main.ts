@@ -12,7 +12,7 @@ if (import.meta.main) {
 
   const taskProvider = TaskProviderFactory.create(config);
 
-  const today = config.targetDate; // 今日
+  const today = new Date(); // 今日
   const previousDay = subBusinessDays(today, 1); // 前営業日
   const DATE_FORMAT = "yyyy-MM-dd";
 
@@ -24,7 +24,7 @@ if (import.meta.main) {
   // やったことを取得
   const completedTasks = await taskProvider.getCompletedTasks(
     previousDay,
-    today,
+    today
   );
   logger.debug({ completedTasks });
 
