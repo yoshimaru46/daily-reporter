@@ -15,7 +15,6 @@ if (import.meta.main) {
   const today = new Date(); // 今日
   const previousDay = subBusinessDays(today, 1); // 前営業日
   const DATE_FORMAT = "yyyy-MM-dd";
-
   logger.debug({
     today: format(today, DATE_FORMAT),
     previousDay: format(previousDay, DATE_FORMAT),
