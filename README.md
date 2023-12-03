@@ -13,9 +13,17 @@ cp .env.example .env
 - Run script
 
 ```sh
-deno run -A main.ts
+deno run -A --unstable server.ts
 ```
 
 ## Show debug logs
 
 Set `DEBUG_LEVEL` to `debug` in `.env` file
+
+## Deploy to Deno Deploy
+
+- Sign up for Deno Deploy and create a blank project
+
+  - Select `Deploy your own code`
+
+- Add environment variables from `Settings` tab

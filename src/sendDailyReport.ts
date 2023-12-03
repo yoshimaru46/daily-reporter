@@ -1,20 +1,19 @@
-import "https://deno.land/std@0.191.0/dotenv/load.ts";
-
 import { format, subBusinessDays } from "npm:date-fns@2";
-import { TaskProviderFactory } from "./src/task_providers/index.ts";
-import { config } from "./config.ts";
-import { initLogger } from "./src/logger.ts";
-import { formatDailyReport } from "./src/format_daily_report.ts";
+import { TaskProviderFactory } from "./task_providers/index.ts";
+import { ENV } from "./config.ts";
+import { initLogger } from "./logger.ts";
+import { formatDailyReport } from "./format_daily_report.ts";
+import { notifyToSlack } from "./notifyToSlack.ts";
+export const sendDailyReport = async () => {
+  const logger = initLogger(ENV.DEBUG_LEVEL);
+  logger.debug({ ENV });
 
-if (import.meta.main) {
-  const logger = initLogger(config.debugLevel);
-  logger.debug({ config });
-
-  const taskProvider = TaskProviderFactory.create(config);
+  const taskProvider = TaskProviderFactory.create(ENV);
 
   const today = new Date(); // 今日
   const previousDay = subBusinessDays(today, 1); // 前営業日
   const DATE_FORMAT = "yyyy-MM-dd";
+
   logger.debug({
     today: format(today, DATE_FORMAT),
     previousDay: format(previousDay, DATE_FORMAT),
@@ -31,7 +30,10 @@ if (import.meta.main) {
   const nextTasks = await taskProvider.getNextTasks(today);
   logger.debug({ nextTasks });
 
-  // 整形して出力
+  // 整形
   const output = formatDailyReport(completedTasks, nextTasks);
-  console.log(output);
-}
+  logger.debug({ output });
+
+  // 送信
+  await notifyToSlack(output);
+};
