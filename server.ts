@@ -16,7 +16,7 @@ Deno.serve(() =>
 );
 
 // Send daily report at 9:00 am (JST)
-Deno.cron("Send daily report", "* * * * *", () => {
+Deno.cron("Send daily report", "0 0 0 * * *", () => {
   sendDailyReport()
     .then(() => {
       console.log("ok");
