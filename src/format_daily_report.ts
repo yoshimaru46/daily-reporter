@@ -1,8 +1,19 @@
 import { Task } from "./task_providers/types.ts";
 
+/*
+example:
+
+## やったこと
+- タスク1
+- タスク2
+
+## やること
+- タスク3
+- タスク4
+*/
 export const formatDailyReport = (
   completedTasks: Task[],
-  nextTasks: Task[],
+  nextTasks: Task[]
 ) => {
   const completedTasksText = tasksText(completedTasks);
   const nextTasksText = tasksText(nextTasks);

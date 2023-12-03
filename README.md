@@ -13,7 +13,7 @@ cp .env.example .env
 - Run script
 
 ```sh
-deno run -A main.ts
+deno run -A --unstable server.ts
 ```
 
 ## Show debug logs
@@ -22,11 +22,8 @@ Set `DEBUG_LEVEL` to `debug` in `.env` file
 
 ## Deploy to Deno Deploy
 
-- install the deployctl utility
-
-```sh
-deno install -A --no-check -r -f https://deno.land/x/deploy/deployctl.ts
-```
-
 - Sign up for Deno Deploy and create a blank project
+
   - Select `Deploy your own code`
+
+- Add environment variables from `Settings` tab

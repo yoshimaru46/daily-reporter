@@ -1,13 +1,15 @@
-import { Config } from "../../config.ts";
 import { TodoistTaskProvider } from "./todoist.ts";
 import { TaskProvider } from "./types.ts";
+import type { ENV } from "../config.ts";
 
 class TaskProviderFactory {
-  public static create(config: Config): TaskProvider {
-    switch (config.targetProvider) {
+  public static create(env: ENV): TaskProvider {
+    switch (env.TARGET_PROVIDER) {
       case "todoist": {
-        const { token, projectId } = config.todoist;
-        return new TodoistTaskProvider(token, projectId);
+        return new TodoistTaskProvider(
+          env.TODOIST_TOKEN,
+          env.TODOIST_PROJECT_ID
+        );
       }
       default:
         throw new Error("Invalid type");
